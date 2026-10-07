@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不重要圖書館 | Unimportant Library</title>
+  <meta name="description" content="不重要圖書館 — 政府機關與人民共同營運的線上圖書館。知識共享、開放取用、人人可貢獻。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">跳至主要內容</a>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="不重要圖書館首頁">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">
+          <span class="logo-zh">不重要圖書館</span>
+          <span class="logo-en">Unimportant Library</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="主要導覽">
+        <ul class="nav-list">
+          <li><a href="#about-lib" class="nav-link">關於</a></li>
+          <li><a href="#categories" class="nav-link">分類</a></li>
+          <li><a href="#collection" class="nav-link">館藏</a></li>
+          <li><a href="#borrow" class="nav-link">線上借書</a></li>
+          <li><a href="#updates" class="nav-link">動態</a></li>
+          <li><a href="#coop" class="nav-link">共同營運</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#borrow" class="btn btn-primary">線上借書</a>
+        <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false" id="menu-toggle">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <nav aria-label="行動導覽">
+      <ul>
+        <li><a href="#about-lib">關於</a></li>
+        <li><a href="#categories">分類</a></li>
+        <li><a href="#collection">館藏</a></li>
+        <li><a href="#borrow">線上借書</a></li>
+        <li><a href="#updates">動態</a></li>
+        <li><a href="#coop">共同營運</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">政府 · 人民 · 共同營運</p>
+        <h1 class="hero-title">
+          不重要圖書館
+          <span class="hero-title-accent"><br>知識不必重要，才值得被保存</span>
+        </h1>
+        <p class="hero-desc">
+          這是一座線上圖書館，由政府機關與人民共同營運。我們收藏被遺忘、被忽視、被認為「不重要」的文字與紀錄——因為真正重要的，往往藏在不重要之中。
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="about-lib">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">關於本館</h2>
+        </header>
+        <div class="intro-card" data-stagger>
+          <p class="intro-label">線上圖書館</p>
+          <h3 class="intro-name">不重要圖書館</h3>
+          <p class="intro-desc">
+            本館由公部門與公民協作維護，採開放取用原則。任何人皆可閱讀、建議書目、貢獻校訂或上傳已進入公共領域之文獻。我們相信：圖書館不應只服務「重要」的知識，也應為日常、邊緣與沉默的紀錄保留位置。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories" id="categories">
+      <div class="container">
+        <header class="section-header">
+          <div>
+            <h2 class="section-title">館藏分類</h2>
+            <p class="section-desc">依主題整理，便於瀏覽與貢獻</p>
+          </div>
+        </header>
+        <div class="cat-grid">
+          <article class="cat-card" data-stagger>
+            <h3>日常紀錄</h3>
+            <p>日記摘錄、地方傳聞、市場物價、公車時刻與消失的店招。</p>
+          </article>
+          <article class="cat-card" data-stagger>
+            <h3>邊緣文獻</h3>
+            <p>少數族群口述、被退稿的論文、未出版的手稿與匿名短篇。</p>
+          </article>
+          <article class="cat-card" data-stagger>
+            <h3>政策附件</h3>
+            <p>公報附錄、會議記錄、預算細目與被標記為「僅供參考」的報告。</p>
+          </article>
+          <article class="cat-card" data-stagger>
+            <h3>語言與文字</h3>
+            <p>方言詞彙、舊正字法、被廢棄的拼音方案與手寫體樣本。</p>
+          </article>
+          <article class="cat-card" data-stagger>
+            <h3>技術備忘</h3>
+            <p>過時規格、錯誤修正日誌、內部 wiki 與已下線服務的說明書。</p>
+          </article>
+          <article class="cat-card" data-stagger>
+            <h3>人民投稿</h3>
+            <p>公民上傳的掃描件、轉錄文字與共同校訂中的開放書目。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="container">
+        <header class="section-header">
+          <div>
+            <h2 class="section-title">最新上架</h2>
+            <p class="section-desc">近期入庫與整理完成的書目</p>
+          </div>
+          <a href="#" class="btn btn-ghost">查看全部</a>
+        </header>
+        <div class="book-grid">
+          <article class="book-card" data-stagger>
+            <h3>某縣市 1987 年公車時刻表（殘頁）</h3>
+            <p class="book-meta">日常紀錄 · 掃描件 · 公共領域</p>
+            <p>保存已廢線的班次與站名，供地方史研究與懷舊參考。</p>
+          </article>
+          <article class="book-card" data-stagger>
+            <h3>未採用的「簡化國字」草案附件</h3>
+            <p class="book-meta">政策附件 · 文字 · 機關開放資料</p>
+            <p>當年討論中被擱置的字形對照表與理由說明。</p>
+          </article>
+          <article class="book-card" data-stagger>
+            <h3>匿名投稿：關於「不重要」的一封信</h3>
+            <p class="book-meta">人民投稿 · 短文 · 授權開放</p>
+            <p>一位讀者寫給本館的信，討論為何要收藏被忽略的事物。</p>
+          </article>
+          <article class="book-card" data-stagger>
+            <h3>舊版內部 wiki：服務下線備忘</h3>
+            <p class="book-meta">技術備忘 · 轉載 · 已去敏</p>
+            <p>記錄一個已關閉政府服務的 API 端點與錯誤代碼表。</p>
+          </article>
+          <article class="book-card" data-stagger>
+            <h3>方言詞彙小冊（手抄複本）</h3>
+            <p class="book-meta">語言與文字 · 轉錄 · 公民校訂中</p>
+            <p>由志工逐字謄寫，歡迎補充注音與例句。</p>
+          </article>
+          <article class="book-card" data-stagger>
+            <h3>會議紀錄：第 N 次「開放資料」工作小組</h3>
+            <p class="book-meta">政策附件 · 會議記錄 · 公開</p>
+            <p>討論哪些檔案「暫時不重要」、可以晚一點再上架。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section borrow-section" id="borrow">
+      <div class="container">
+        <header class="section-header">
+          <div>
+            <h2 class="section-title">線上借書</h2>
+            <p class="section-desc">什麼書都借得到 · 請輸入完整書名</p>
+          </div>
+        </header>
+
+        <div class="borrow-layout">
+          <div class="borrow-rules" data-stagger>
+            <h3 class="borrow-rules-title">借閱規則</h3>
+            <ul class="borrow-rules-list">
+              <li><strong>可借範圍</strong>：任何書籍（請輸入完整書名）</li>
+              <li><strong>借閱期限</strong>：自送達日起 <strong>20 天</strong></li>
+              <li><strong>配送時間</strong>：申請後 <strong>7 天內</strong>送達</li>
+              <li><strong>逾期費用</strong>：逾期未還，每日收取 <strong>1 巴拉</strong></li>
+            </ul>
+            <p class="borrow-note">身分證字號僅供本館核對借閱人身分，不會透過通知管道外傳。</p>
+          </div>
+
+          <form class="borrow-form" id="borrow-form" novalidate data-stagger>
+            <div class="form-group">
+              <label for="book-title">想借的書名（完整名稱）<span class="req">*</span></label>
+              <input type="text" id="book-title" name="bookTitle" required autocomplete="off" placeholder="請輸入完整書名">
+            </div>
+            <div class="form-group">
+              <label for="full-name">完整姓名<span class="req">*</span></label>
+              <input type="text" id="full-name" name="fullName" required autocomplete="name" placeholder="與身分證件相符之姓名">
+            </div>
+            <div class="form-group">
+              <label for="id-number">身分證字號<span class="req">*</span></label>
+              <input type="text" id="id-number" name="idNumber" required autocomplete="off" inputmode="text" maxlength="10" placeholder="例如 A123456789" pattern="[A-Za-z][12]\d{8}">
+              <span class="form-hint">僅供核對身分，不會發送至通知系統</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="borrow-submit">確認借書</button>
+            </div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="updates" style="background: var(--bg-subtle); border-block: 1px solid var(--border);">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">館務動態</h2>
+        </header>
+        <div class="news-list">
+          <article class="news-item" data-stagger>
+            <time datetime="2026-10-05">2026.10.05</time>
+            <h3>開放公民上傳「日常紀錄」類掃描件</h3>
+            <p>即日起接受符合公共領域或已取得授權之文件。上傳前請詳閱貢獻說明。</p>
+          </article>
+          <article class="news-item" data-stagger>
+            <time datetime="2026-09-28">2026.09.28</time>
+            <h3>與教育單位合作整理方言詞彙</h3>
+            <p>本館與地方教育單位啟動共同校訂計畫，歡迎師生參與。</p>
+          </article>
+          <article class="news-item" data-stagger>
+            <time datetime="2026-09-12">2026.09.12</time>
+            <h3>不重要圖書館正式上線</h3>
+            <p>由政府機關與人民共同營運的線上圖書館開始提供公開瀏覽與貢獻管道。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coop">
+      <div class="container about-inner">
+        <div class="about-content">
+          <h2 class="section-title">共同營運</h2>
+          <p>
+            不重要圖書館不是單一機關的網站，而是公部門與公民一起維護的知識空間。機關提供基礎基礎設施、法務與長期保存；人民貢獻書目、校訂、轉錄與意見。
+          </p>
+          <p>
+            我們不追求「最重要」的館藏，只盡力讓更多被忽略的文字有一個安靜、可被找到的位置。
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat" data-stagger>
+            <span class="stat-value">6</span>
+            <span class="stat-label">主題分類</span>
+          </div>
+          <div class="stat" data-stagger>
+            <span class="stat-value">∞</span>
+            <span class="stat-label">開放貢獻</span>
+          </div>
+          <div class="stat" data-stagger>
+            <span class="stat-value">1</span>
+            <span class="stat-label">共同館</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark small" aria-hidden="true"></span>
+        <div>
+          <strong>不重要圖書館</strong>
+          <span>Unimportant Library</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">貢獻說明</a>
+        <a href="#">隱私權政策</a>
+        <a href="#">開放資料</a>
+        <a href="#">無障礙聲明</a>
+      </div>
+      <p class="footer-copy">© 2026 不重要圖書館 · 政府機關與人民共同營運</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
