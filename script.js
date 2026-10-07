@@ -1,12 +1,9 @@
 /* 不重要圖書館 — mobile nav, stagger, online borrow form
-   Webhook: book title + name + dates only (NO national ID)
+   Borrow → POST /api/borrow（伺服器寫入排程 + webhook；不含身分證）
 */
 
 (function () {
   "use strict";
-
-  const WEBHOOK_URL =
-    "https://chat.googleapis.com/v1/spaces/AAQALYDXcXQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=6UO5wZjt_tl469AKNg7MDCOtHKcG8UFOPAcrbxp8qzQ";
 
   /* —— Mobile nav —— */
   const menuToggle = document.getElementById("menu-toggle");
@@ -59,19 +56,6 @@
     });
   }
 
-  function formatDate(d) {
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    return y + "-" + m + "-" + day;
-  }
-
-  function addDays(date, days) {
-    const d = new Date(date.getTime());
-    d.setDate(d.getDate() + days);
-    return d;
-  }
-
   /* —— Borrow form —— */
   const form = document.getElementById("borrow-form");
   const statusEl = document.getElementById("form-status");
@@ -81,7 +65,8 @@
     if (!statusEl) return;
     statusEl.hidden = false;
     statusEl.textContent = msg;
-    statusEl.className = "form-status " + (type === "success" ? "is-success" : "is-error");
+    statusEl.className =
+      "form-status " + (type === "success" ? "is-success" : "is-error");
   }
 
   if (form) {
@@ -105,55 +90,35 @@
         return;
       }
 
-      const now = new Date();
-      const deliveryBy = addDays(now, 7);
-      const dueDate = addDays(deliveryBy, 20);
-      // 到期前一天發送提醒
-      const remindDate = addDays(dueDate, -1);
-      const surname = fullName.charAt(0);
-
-      const reminderMsg =
-        surname + "先生/小姐您好\n" +
-        "您於「不重要圖書館」借閱之書  " + bookTitle + "   即將在後天逾期\n" +
-        "若未將書籍歸還於7-ElEVEN 糖村門市\n" +
-        "您將會收到罰款，重則提告\n" +
-        "由於書籍為「台灣台北市圖書館」代借\n" +
-        "若有破損將依法求償";
-
-      // Payload: all form data EXCEPT national ID
-      const text =
-        "📚 不重要圖書館 · 新借書申請\n\n" +
-        "書名：" + bookTitle + "\n" +
-        "借閱人：" + fullName + "\n" +
-        "申請時間：" + formatDate(now) + " " +
-        String(now.getHours()).padStart(2, "0") + ":" +
-        String(now.getMinutes()).padStart(2, "0") + "\n" +
-        "預計送達期限：申請後 7 日內（最晚 " + formatDate(deliveryBy) + "）\n" +
-        "借閱期限：送達後 20 天（約至 " + formatDate(dueDate) + "）\n" +
-        "逾期費用：1 巴拉／天\n" +
-        "⏰ 到期提醒日：" + formatDate(remindDate) + "（到期前一天）\n\n" +
-        "—— 請於提醒日發送以下訊息 ——\n\n" +
-        reminderMsg + "\n\n" +
-        "（身分證字號已依政策排除，未傳送）";
-
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = "送出中…";
       }
 
       try {
-        const res = await fetch(WEBHOOK_URL, {
+        // 身分證僅在前端檢查「有填」，不送後端
+        const res = await fetch("/api/borrow", {
           method: "POST",
           headers: { "Content-Type": "application/json; charset=UTF-8" },
-          body: JSON.stringify({ text: text }),
+          body: JSON.stringify({
+            bookTitle: bookTitle,
+            fullName: fullName,
+          }),
+        });
+
+        const data = await res.json().catch(function () {
+          return {};
         });
 
         if (!res.ok) {
-          throw new Error("Webhook HTTP " + res.status);
+          throw new Error(data.error || "HTTP " + res.status);
         }
 
         showStatus(
-          "借書申請已送出。預計 7 天內送達，借閱期限 20 天；逾期每日 1 巴拉。",
+          "借書申請已送出。預計 7 天內送達，借閱期限 20 天；逾期每日 1 巴拉。" +
+            (data.scheduled
+              ? " 系統已排程於到期前一天自動提醒。"
+              : ""),
           "success"
         );
         form.reset();
