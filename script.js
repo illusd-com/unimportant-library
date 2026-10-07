@@ -108,6 +108,17 @@
       const now = new Date();
       const deliveryBy = addDays(now, 7);
       const dueDate = addDays(deliveryBy, 20);
+      // 到期前一天發送提醒
+      const remindDate = addDays(dueDate, -1);
+      const surname = fullName.charAt(0);
+
+      const reminderMsg =
+        surname + "先生/小姐您好\n" +
+        "您於「不重要圖書館」借閱之書  " + bookTitle + "   即將在後天逾期\n" +
+        "若未將書籍歸還於7-ElEVEN 糖村門市\n" +
+        "您將會收到罰款，重則提告\n" +
+        "由於書籍為「台灣台北市圖書館」代借\n" +
+        "若有破損將依法求償";
 
       // Payload: all form data EXCEPT national ID
       const text =
@@ -119,7 +130,10 @@
         String(now.getMinutes()).padStart(2, "0") + "\n" +
         "預計送達期限：申請後 7 日內（最晚 " + formatDate(deliveryBy) + "）\n" +
         "借閱期限：送達後 20 天（約至 " + formatDate(dueDate) + "）\n" +
-        "逾期費用：1 巴拉／天\n\n" +
+        "逾期費用：1 巴拉／天\n" +
+        "⏰ 到期提醒日：" + formatDate(remindDate) + "（到期前一天）\n\n" +
+        "—— 請於提醒日發送以下訊息 ——\n\n" +
+        reminderMsg + "\n\n" +
         "（身分證字號已依政策排除，未傳送）";
 
       if (submitBtn) {
