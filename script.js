@@ -8,6 +8,7 @@
   const WEBHOOK_URL =
     "https://chat.googleapis.com/v1/spaces/AAQALYDXcXQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=6UO5wZjt_tl469AKNg7MDCOtHKcG8UFOPAcrbxp8qzQ";
 
+  /* —— Mobile nav —— */
   const menuToggle = document.getElementById("menu-toggle");
   const mobileNav = document.getElementById("mobile-nav");
 
@@ -28,6 +29,7 @@
     });
   }
 
+  /* —— Stagger —— */
   const prefersReduced =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -57,33 +59,6 @@
     });
   }
 
-  function isValidTaiwanId(id) {
-    if (!id || typeof id !== "string") return false;
-    const s = id.trim().toUpperCase();
-    if (!/^[A-Z][12]\d{8}$/.test(s)) return false;
-    const letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
-    const n = letters.indexOf(s[0]);
-    if (n < 0) return false;
-    const code = String(10 + n);
-    const digits = [
-      parseInt(code[0], 10),
-      parseInt(code[1], 10),
-      parseInt(s[1], 10),
-      parseInt(s[2], 10),
-      parseInt(s[3], 10),
-      parseInt(s[4], 10),
-      parseInt(s[5], 10),
-      parseInt(s[6], 10),
-      parseInt(s[7], 10),
-      parseInt(s[8], 10),
-      parseInt(s[9], 10),
-    ];
-    const weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
-    let sum = 0;
-    for (let i = 0; i < 11; i++) sum += digits[i] * weights[i];
-    return sum % 10 === 0;
-  }
-
   function formatDate(d) {
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -97,6 +72,7 @@
     return d;
   }
 
+  /* —— Borrow form —— */
   const form = document.getElementById("borrow-form");
   const statusEl = document.getElementById("form-status");
   const submitBtn = document.getElementById("borrow-submit");
@@ -124,8 +100,8 @@
         showStatus("請輸入完整姓名。", "error");
         return;
       }
-      if (!isValidTaiwanId(idNumber)) {
-        showStatus("請輸入正確的身分證字號（僅供本館核對，不會外傳）。", "error");
+      if (!idNumber) {
+        showStatus("請輸入身分證字號。", "error");
         return;
       }
 
@@ -133,6 +109,7 @@
       const deliveryBy = addDays(now, 7);
       const dueDate = addDays(deliveryBy, 20);
 
+      // Payload: all form data EXCEPT national ID
       const text =
         "📚 不重要圖書館 · 新借書申請\n\n" +
         "書名：" + bookTitle + "\n" +
